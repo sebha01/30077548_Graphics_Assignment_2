@@ -1,1 +1,15 @@
-﻿
+﻿  Camera.cpp
+  Mesh.cpp
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\Resources\CoreStructures\Mesh.cpp(46,43): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Model.cpp
+  ShaderLoader.cpp
+  SkinnedMesh.cpp
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\Resources\CoreStructures\SkinnedMesh.cpp(301,24): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\Resources\CoreStructures\SkinnedMesh.cpp(305,38): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\Resources\CoreStructures\SkinnedMesh.cpp(307,27): warning C4018: '<': signed/unsigned mismatch
+  TextureLoader.cpp
+  Timer.cpp
+  Source.cpp
+  Generating Code...
+  glad.c
+  OpenGL.vcxproj -> C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\x64\Debug\30077548_CW2.exe

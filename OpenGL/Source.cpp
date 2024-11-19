@@ -1,12 +1,9 @@
 #include "Includes.h"
 
+//////////////////////////////////////////////////////////////////////////////
+// VARIABLES
+//////////////////////////////////////////////////////////////////////////////
 
-// Function prototypes
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void processInput(GLFWwindow *window);
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 // Camera settings
 //							  width, height, near plane, far plane
@@ -21,6 +18,21 @@ Camera camera(camera_settings, glm::vec3(0.0, 30.0, 150.0));
 double lastX = camera_settings.screenWidth / 2.0f;
 double lastY = camera_settings.screenHeight / 2.0f;
 
+
+//////////////////////////////////////////////////////////////////////////////
+// PROTOTYPES
+//////////////////////////////////////////////////////////////////////////////
+
+// Function prototypes
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void processInput(GLFWwindow *window);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+
+//////////////////////////////////////////////////////////////////////////////
+// FUNCTIONS
+//////////////////////////////////////////////////////////////////////////////
 
 int main()
 {
