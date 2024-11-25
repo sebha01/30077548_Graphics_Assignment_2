@@ -88,13 +88,16 @@ int main()
 
 
 	SkinnedMesh dragonModel;
-	bool success = false;
+
+	dragonModel.LoadMesh("Resources\\Models\\Dragon\\Dragon_Baked_Actions_fbx_7.4_binary.fbx");
+
+	/*bool success = false;
 	if (!success)
 	{
 		cout << "Model failed to load" << endl;
 		getchar();
 		return 0;
-	}
+	}*/
 
 	const int numberOfBones = dragonModel.NumBones();
 
@@ -124,8 +127,11 @@ int main()
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(rotation * scale * model));
 
 		//Static time
+		static float time = 0.0;
+		time += timer.getDeltaTimeSeconds();
 
-		dragonModel.BoneTransform(0, Transforms, 0);
+		//Animations 0 or 1
+		dragonModel.BoneTransform(time, Transforms, 0);
 		
 		for (int i = 0; i < numberOfBones; i++)
 		{

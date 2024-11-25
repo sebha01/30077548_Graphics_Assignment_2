@@ -1,2 +1,3 @@
 ﻿  Source.cpp
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(131,36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   OpenGL.vcxproj -> C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\x64\Debug\30077548_CW2.exe
