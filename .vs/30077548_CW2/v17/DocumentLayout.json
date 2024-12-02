@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "OpenGL\\Source.cpp",
               "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp",
               "RelativeToolTip": "OpenGL\\Source.cpp",
-              "ViewState": "AgIAAIQAAAAAAAAAAADwv68AAAAHAAAAAAAAAA==",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAAALQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-19T21:30:26.497Z",
               "EditorCaption": ""
@@ -47,8 +47,7 @@
               "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Basic_shader.vert",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-02T11:43:21.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T11:43:21.625Z"
             },
             {
               "$type": "Document",
@@ -60,8 +59,7 @@
               "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Basic_shader.frag",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-02T11:43:21.136Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-02T11:43:21.136Z"
             }
           ]
         }

@@ -71,6 +71,7 @@ int main()
 	GLuint metalTex;
 	GLuint marbleTex;
 	GLuint grassTexture;
+	GLuint himejiCastleTexture;
 
 	// build and compile our shader program
 	GLSL_ERROR glsl_err = ShaderLoader::createShaderProgram(
@@ -81,6 +82,7 @@ int main()
 
 	Model sphere("Resources\\Models\\Sphere.obj");
 	Model plane("Resources\\Models\\Plane.obj");
+	//Model himejiCastle("Resources\\Models\\HimejiCastle\\himejiCastle.obj");
 
 	metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
 	grassTexture = TextureLoader::loadTexture("Resources\\Models\\Grass\\grassTexture.jpg");
@@ -137,6 +139,7 @@ int main()
 
 		glm::mat4 sphereModel = glm::mat4(1.0);
 		glm::mat4 planeModel = glm::mat4(1.0);
+		glm::mat4 himejiCastleModel = glm::translate(glm::mat4(1.0), glm::vec3(0.0, -50.0, 0.0));
 		glm::mat4 view = camera.getViewMatrix();
 		glm::mat4 projection = camera.getProjectionMatrix();
 
@@ -174,6 +177,9 @@ int main()
 
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(planeModel));
 		plane.draw(basicShader); //Draw the plane
+
+		//glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(himejiCastleModel));
+		//himejiCastle.draw(basicShader);
 
 		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-3.0, 3.0, -3.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
