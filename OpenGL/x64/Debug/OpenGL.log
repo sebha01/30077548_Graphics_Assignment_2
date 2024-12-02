@@ -1,7 +1,8 @@
 ﻿  Source.cpp
-C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(92,30): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(92,35): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(92,40): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(105,33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
-C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(105,39): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(93,30): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(93,35): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(93,40): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(106,33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(106,39): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(72,9): warning C4101: 'marbleTex': unreferenced local variable
   OpenGL.vcxproj -> C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\x64\Debug\30077548_CW2.exe

@@ -70,6 +70,7 @@ int main()
 	// Texture container
 	GLuint metalTex;
 	GLuint marbleTex;
+	GLuint grassTexture;
 
 	// build and compile our shader program
 	GLSL_ERROR glsl_err = ShaderLoader::createShaderProgram(
@@ -79,13 +80,13 @@ int main()
 
 
 	Model sphere("Resources\\Models\\Sphere.obj");
-	Model plane("Resources\\Models\\Plane.obj");
+	Model plane("Resources\\Models\\Grass\\grass.obj");
 
 	metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
-	marbleTex = TextureLoader::loadTexture("Resources\\Models\\marble_texture.jpg");
+	grassTexture = TextureLoader::loadTexture("Resources\\Models\\Grass\\grassTexture.jpg");
 
 	sphere.attachTexture(metalTex);
-	plane.attachTexture(marbleTex);
+	plane.attachTexture(grassTexture);
 
 	//Light Data///////////////////////////////////////////////
 	// Lights
