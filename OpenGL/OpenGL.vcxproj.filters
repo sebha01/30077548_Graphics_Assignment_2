@@ -85,10 +85,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Shaders\Basic_shader.frag">
+    <None Include="Resources\Shaders\ModelShader.frag">
       <Filter>Resource Files\Shaders</Filter>
     </None>
-    <None Include="Resources\Shaders\Basic_shader.vert">
+    <None Include="Resources\Shaders\ModelShader.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Basic_shader.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="Basic_shader.frag">
       <Filter>Resource Files\Shaders</Filter>
     </None>
   </ItemGroup>

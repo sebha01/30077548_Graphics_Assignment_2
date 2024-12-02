@@ -1,38 +1,25 @@
 #include "Includes.h"
 
-//////////////////////////////////////////////////////////////////////////////
-// VARIABLES
-//////////////////////////////////////////////////////////////////////////////
-
+// Function prototypes
+void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+void processInput(GLFWwindow* window);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 // Camera settings
-//							  width, height, near plane, far plane
-Camera_settings camera_settings{ 1200, 1000, 0.1, 2000.0 };
+//							  width, heigh, near plane, far plane
+Camera_settings camera_settings{ 1200, 1000, 0.1, 100.0 };
 
 //Timer
 Timer timer;
 
 // Instantiate the camera object with basic data
-Camera camera(camera_settings, glm::vec3(0.0, 30.0, 150.0));
+Camera camera(camera_settings, glm::vec3(0.0, 5.0, 12.0));
 
 double lastX = camera_settings.screenWidth / 2.0f;
 double lastY = camera_settings.screenHeight / 2.0f;
 
-
-//////////////////////////////////////////////////////////////////////////////
-// PROTOTYPES
-//////////////////////////////////////////////////////////////////////////////
-
-// Function prototypes
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
-void processInput(GLFWwindow *window);
-void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-
-//////////////////////////////////////////////////////////////////////////////
-// FUNCTIONS
-//////////////////////////////////////////////////////////////////////////////
 
 int main()
 {
@@ -45,7 +32,7 @@ int main()
 
 
 	// glfw window creation
-	GLFWwindow* window = glfwCreateWindow(camera_settings.screenWidth, camera_settings.screenHeight, "Computer Graphics: Tutorial 21", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(camera_settings.screenWidth, camera_settings.screenHeight, "Computer Graphics: Tutorial 20", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -64,7 +51,7 @@ int main()
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
 	// glad: load all OpenGL function pointers
-	if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
+	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
 		std::cout << "Failed to initialize GLAD" << std::endl;
 		return -1;
@@ -80,28 +67,61 @@ int main()
 
 	GLuint basicShader;
 
+	// Texture container
+	GLuint metalTex;
+	GLuint marbleTex;
+
 	// build and compile our shader program
 	GLSL_ERROR glsl_err = ShaderLoader::createShaderProgram(
-		string("Resources\\Shaders\\Basic_shader.vert"), 
+		string("Resources\\Shaders\\Basic_shader.vert"),
 		string("Resources\\Shaders\\Basic_shader.frag"),
 		&basicShader);
 
 
-	SkinnedMesh dragonModel;
+	Model sphere("Resources\\Models\\Sphere.obj");
+	Model plane("Resources\\Models\\Plane.obj");
 
-	dragonModel.LoadMesh("Resources\\Models\\Dragon\\Dragon_Baked_Actions_fbx_7.4_binary.fbx");
+	metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
+	marbleTex = TextureLoader::loadTexture("Resources\\Models\\marble_texture.jpg");
 
-	/*bool success = false;
-	if (!success)
-	{
-		cout << "Model failed to load" << endl;
-		getchar();
-		return 0;
-	}*/
+	sphere.attachTexture(metalTex);
+	plane.attachTexture(marbleTex);
 
-	const int numberOfBones = dragonModel.NumBones();
+	//Light Data///////////////////////////////////////////////
+	// Lights
+	GLfloat light_ambient[] = { 0.1, 0.1, 0.1, 1.0 };	// Dim light 
+	GLfloat light_diffusers[] = {
+		1.0, 0.0, 0.0, 1.0, // Red
+		0.0, 1.0, 0.0, 1.0, // Green
+		0.0, 0.0, 1.0, 1.0, // Blue
+		1.0, 1.0, 0.0, 1.0 // Yellow 
+	};	// White main light 
+	GLfloat light_positions[] = {
+		5.0, 5.0, 5.0, 1.0,
+		-5.0, 5.0, 5.0, 1.0,
+		5.0, 5.0, -5.0, 1.0,
+		-5.0, 5.0, -5.0, 1.0
+	};	// Point light (w=1.0)
+	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
 
-	vector<glm::mat4> Transforms;
+	// Materials
+	GLfloat mat_amb_diff[] = { 1.0, 1.0, 1.0, 1.0 };	// Texture map will provide ambient and diffuse.
+	GLfloat mat_specularCol[] = { 1.0, 1.0, 1.0, 1.0 }; // White highlight
+	GLfloat mat_specularExp = 32.0;					// Shiny surface
+
+	//Uniform Locations - Basic Shader////////////////////////////////////////////
+	// Get unifom locations in shader
+	GLuint uLightAmbient = glGetUniformLocation(basicShader, "lightAmbient");
+	GLuint uLightDiffusers = glGetUniformLocation(basicShader, "lightDiffusers");
+	GLuint uLightAttenuation = glGetUniformLocation(basicShader, "lightAttenuation");
+	GLuint uLightPositions = glGetUniformLocation(basicShader, "lightPositions");
+	GLuint uEyePos = glGetUniformLocation(basicShader, "eyePos");
+
+	// Get material unifom locations in shader
+	GLuint uMatAmbient = glGetUniformLocation(basicShader, "matAmbient");
+	GLuint uMatDiffuse = glGetUniformLocation(basicShader, "matDiffuse");
+	GLuint uMatSpecularCol = glGetUniformLocation(basicShader, "matSpecularColour");
+	GLuint uMatSpecularExp = glGetUniformLocation(basicShader, "matSpecularExponent");
 
 	// render loop
 	while (!glfwWindowShouldClose(window))
@@ -114,33 +134,61 @@ int main()
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glm::mat4 model = glm::mat4(1.0);
+		glm::mat4 sphereModel = glm::mat4(1.0);
+		glm::mat4 planeModel = glm::mat4(1.0);
 		glm::mat4 view = camera.getViewMatrix();
 		glm::mat4 projection = camera.getProjectionMatrix();
-		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
-		glm::mat4 rotation = glm::rotate(glm::mat4(1.0), glm::radians(12.0f), glm::vec3(0.0, 1.0, 0.0));
+
+		glm::mat4 scaleMat = glm::scale(glm::mat4(1.0), glm::vec3(0.3, 0.3, 0.3));
+		glm::vec3 eyePos = camera.getCameraPosition();
+
 
 		glUseProgram(basicShader); //Use the Basic shader
 
+		//Move lights around
+		/*static double time = 0.0;
+		time += timer.getDeltaTimeSeconds();
+		light_positions[1] += sin(float(time));
+		light_positions[5] += sin(float(time));
+		light_positions[9] += sin(float(time));
+		light_positions[13] += sin(float(time));*/
+
+
+		//Pass the uniform data to Basic shader///////////////////////////////////
+		//Pass the light data
+		glUniform4fv(uLightDiffusers, 4, (GLfloat*)&light_diffusers);
+		glUniform4fv(uLightAmbient, 1, (GLfloat*)&light_ambient);
+		glUniform4fv(uLightPositions, 4, (GLfloat*)&light_positions);
+		glUniform3fv(uLightAttenuation, 1, (GLfloat*)&attenuation);
+		glUniform3fv(uEyePos, 1, (GLfloat*)&eyePos);
+
+		//Pass material data
+		glUniform4fv(uMatAmbient, 1, (GLfloat*)&mat_amb_diff);
+		glUniform4fv(uMatDiffuse, 1, (GLfloat*)&mat_amb_diff);
+		glUniform4fv(uMatSpecularCol, 1, (GLfloat*)&mat_specularCol);
+		glUniform1f(uMatSpecularExp, mat_specularExp);
+
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(rotation * scale * model));
 
-		//Static time
-		static float time = 0.0;
-		time += timer.getDeltaTimeSeconds();
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(planeModel));
+		plane.draw(basicShader); //Draw the plane
 
-		//Animations 0 or 1
-		dragonModel.BoneTransform(time, Transforms, 0);
-		
-		for (int i = 0; i < numberOfBones; i++)
-		{
-			stringstream name;
-			name << "gBones[" << i << "]";
-			glUniformMatrix4fv(glGetUniformLocation(basicShader, name.str().c_str()), 1, GL_FALSE, glm::value_ptr(Transforms[i]));
-		}
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-3.0, 3.0, -3.0)) * scaleMat;
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
+		sphere.draw(basicShader); //Draw first sphere
 
-		dragonModel.Render(basicShader);
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(3.0, 3.0, -3.0)) * scaleMat;
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
+		sphere.draw(basicShader); //Draw second sphere
+
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-3.0, 3.0, 3.0)) * scaleMat;
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
+		sphere.draw(basicShader); //Draw third sphere
+
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(3.0, 3.0, 3.0)) * scaleMat;
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
+		sphere.draw(basicShader); //Draw fourth sphere
 
 		// glfw: swap buffers and poll events
 		glfwSwapBuffers(window);
@@ -153,7 +201,7 @@ int main()
 }
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-void processInput(GLFWwindow *window)
+void processInput(GLFWwindow* window)
 {
 	timer.updateDeltaTime();
 

@@ -148,8 +148,10 @@
     <ClInclude Include="Includes.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Shaders\Basic_shader.frag" />
-    <None Include="Resources\Shaders\Basic_shader.vert" />
+    <None Include="Basic_shader.frag" />
+    <None Include="Basic_shader.vert" />
+    <None Include="Resources\Shaders\ModelShader.frag" />
+    <None Include="Resources\Shaders\ModelShader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
