@@ -1,4 +1,8 @@
 ﻿  Source.cpp
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(12,34): warning C4838: conversion from 'double' to 'unsigned int' requires a narrowing conversion
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(12,34): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(12,42): warning C4838: conversion from 'double' to 'unsigned int' requires a narrowing conversion
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(12,42): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
 C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(93,30): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(93,35): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(93,40): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'

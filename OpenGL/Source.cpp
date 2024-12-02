@@ -9,7 +9,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 // Camera settings
 //							  width, heigh, near plane, far plane
-Camera_settings camera_settings{ 1200, 1000, 0.1, 100.0 };
+Camera_settings camera_settings{ 1800.0, 1500.0, 0.1, 100.0 };
 
 //Timer
 Timer timer;
@@ -80,13 +80,13 @@ int main()
 
 
 	Model sphere("Resources\\Models\\Sphere.obj");
-	Model plane("Resources\\Models\\Grass\\grass.obj");
+	Model grass("Resources\\Models\\Grass\\grass.obj");
 
 	metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
 	grassTexture = TextureLoader::loadTexture("Resources\\Models\\Grass\\grassTexture.jpg");
 
 	sphere.attachTexture(metalTex);
-	plane.attachTexture(grassTexture);
+	grass.attachTexture(grassTexture);
 
 	//Light Data///////////////////////////////////////////////
 	// Lights
@@ -136,7 +136,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glm::mat4 sphereModel = glm::mat4(1.0);
-		glm::mat4 planeModel = glm::mat4(1.0);
+		glm::mat4 grassModel = glm::mat4(1.0);
 		glm::mat4 view = camera.getViewMatrix();
 		glm::mat4 projection = camera.getProjectionMatrix();
 
@@ -172,8 +172,9 @@ int main()
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
-		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(planeModel));
-		plane.draw(basicShader); //Draw the plane
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(grassModel));
+		grassModel = glm::translate(glm::mat4(1.0), glm::vec3(0.0, -100.0, 0.0)) * scaleMat;
+		grass.draw(basicShader); //Draw the plane
 
 		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-3.0, 3.0, -3.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
