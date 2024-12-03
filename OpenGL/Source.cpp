@@ -216,14 +216,16 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 
+	double cameraMoveSpeed = timer.getDeltaTimeSeconds() * 8;
+
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		camera.processKeyboard(FORWARD, timer.getDeltaTimeSeconds());
+		camera.processKeyboard(FORWARD, cameraMoveSpeed);
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		camera.processKeyboard(BACKWARD, timer.getDeltaTimeSeconds());
+		camera.processKeyboard(BACKWARD, cameraMoveSpeed);
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-		camera.processKeyboard(LEFT, timer.getDeltaTimeSeconds());
+		camera.processKeyboard(LEFT, cameraMoveSpeed);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-		camera.processKeyboard(RIGHT, timer.getDeltaTimeSeconds());
+		camera.processKeyboard(RIGHT, cameraMoveSpeed);
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
