@@ -15,7 +15,7 @@ Camera_settings camera_settings{ 1500.0, 1200.0, 0.1, 500.0 };
 Timer timer;
 
 // Instantiate the camera object with basic data
-Camera camera(camera_settings, glm::vec3(0.0, 5.0, 32.0));
+Camera camera(camera_settings, glm::vec3(0.0, 15.0, 52.0));
 
 double lastX = camera_settings.screenWidth / 2.0f;
 double lastY = camera_settings.screenHeight / 2.0f;
@@ -190,11 +190,11 @@ int main()
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
 		//Drawing the objects
-		planeModel = glm::scale(glm::mat4(1.0), glm::vec3(3.0, 3.0, 3.0));
+		planeModel = glm::scale(glm::mat4(1.0), glm::vec3(5.0, 5.0, 5.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(planeModel));
 		plane.draw(basicShader); //Draw the plane
 
-		japaneseTempleModel = glm::scale(glm::mat4(1.0), glm::vec3(0.3, 0.3, 0.3));
+		japaneseTempleModel = glm::scale(glm::mat4(1.0), glm::vec3(1.0, 1.0, 1.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(japaneseTempleModel));
 		japaneseTemple.draw(basicShader);
 
@@ -226,10 +226,38 @@ int main()
 
 
 		//Render the eagle
+
+		//Static time
+		static float time = 0.0;
+		time += timer.getDeltaTimeSeconds();
+
+		//glm::mat4 eagleModel = glm::mat4(1.0);
+		//glm::mat4 translation = glm::translate(glm::mat4(1.0), glm::vec3(15.0, 12.0, 0.0));
+		//glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
+		//glm::mat4 rotation = glm::mat4(1.0);
+		////glm::mat4 rotation = glm::rotate(glm::mat4(1.0), glm::radians(12.0f), glm::vec3(0.0, 1.0, 0.0));
+
+		// Calculate the angle for circular motion (e.g., 30 degrees per second)
+		float angle = glm::radians(30.0f) * time; // Adjust speed with 30.0f
+
+		// Define the transformation matrices
 		glm::mat4 eagleModel = glm::mat4(1.0);
-		glm::mat4 translation = glm::translate(glm::mat4(1.0), glm::vec3(0.0, 12.0, 0.0));
+
+		// Translation vector at a radius of 15 units and height of 12 units
+		glm::vec3 position = glm::vec3(15.0, 12.0, 0.0);
+
+		// Apply rotation around the Y-axis to make the eagle circle
+		glm::mat4 rotation = glm::rotate(glm::mat4(1.0), angle, glm::vec3(0.0, 1.0, 0.0));
+		glm::vec3 rotatedPosition = glm::vec3(rotation * glm::vec4(position, 1.0));
+
+		// New translation to the rotated position
+		glm::mat4 translation = glm::translate(glm::mat4(1.0), rotatedPosition);
+
+		// Scale to adjust the eagle's size
 		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
-		glm::mat4 rotation = glm::rotate(glm::mat4(1.0), glm::radians(12.0f), glm::vec3(0.0, 1.0, 0.0));
+
+		// Combine transformations: translation first, then scale
+		eagleModel = translation * scale;
 
 		glUseProgram(modelShader); //Use the model shader
 
@@ -238,10 +266,6 @@ int main()
 
 		eagleModel = translation * rotation * scale;
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "model"), 1, GL_FALSE, glm::value_ptr(eagleModel));
-
-		//Static time
-		static float time = 0.0;
-		time += timer.getDeltaTimeSeconds();
 
 		//Animations are 0 and 1
 		eagle.BoneTransform(time, Transforms, 1);
