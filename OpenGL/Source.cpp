@@ -78,10 +78,22 @@ int main()
 		string("Resources\\Shaders\\Basic_shader.frag"),
 		&basicShader);
 
+	glsl_err = ShaderLoader::createShaderProgram(
+		string("Resources\\Shaders\\ModelShader.vert"),
+		string("Resources\\Shaders\\ModelShader.frag"),
+		&modelShader);
+
 
 	Model sphere("Resources\\Models\\Sphere.obj");
 	Model plane("Resources\\Models\\Plane.obj");
 	Model japaneseTemple("Resources\\Models\\JapaneseTemple\\Japanese_Temple.obj");
+
+	SkinnedMesh eagle;
+
+	eagle.LoadMesh("Resources\\Models\\Eagle\\eagle.fbx");
+
+	const int numberOfBones = eagle.NumBones();
+	vector<glm::mat4> Transforms;
 
 	sphere.attachTexture(metalTex);
 	plane.attachTexture(grassTexture);
@@ -196,6 +208,34 @@ int main()
 		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, 10.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
 		sphere.draw(basicShader); //Draw fourth sphere
+
+
+		//Render the eagle
+		glm::mat4 eagleModel = glm::mat4(1.0);
+		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
+		glm::mat4 rotation = glm::rotate(glm::mat4(1.0), glm::radians(12.0f), glm::vec3(0.0, 1.0, 0.0));
+
+		glUseProgram(modelShader); //Use the Basic shader
+
+		glUniformMatrix4fv(glGetUniformLocation(modelShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(glGetUniformLocation(modelShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+		glUniformMatrix4fv(glGetUniformLocation(modelShader, "model"), 1, GL_FALSE, glm::value_ptr(rotation* scale* eagleModel));
+
+		//Static time
+		static float time = 0.0;
+		time += timer.getDeltaTimeSeconds();
+
+		//Animations are 0 and 1
+		eagle.BoneTransform(time, Transforms, 1);
+
+		for (int i = 0; i < numberOfBones; i++)
+		{
+			stringstream name;
+			name << "gBones[" << i << "]";
+			glUniformMatrix4fv(glGetUniformLocation(modelShader, name.str().c_str()), 1, GL_FALSE, glm::value_ptr(Transforms[i]));
+		}
+
+		eagle.Render(basicShader);
 
 		// glfw: swap buffers and poll events
 		glfwSwapBuffers(window);
