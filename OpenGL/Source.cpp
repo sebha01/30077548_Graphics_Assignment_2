@@ -87,8 +87,8 @@ int main()
 	Model sphere("Resources\\Models\\Sphere.obj");
 	Model plane("Resources\\Models\\Plane.obj");
 	Model japaneseTemple("Resources\\Models\\JapaneseTemple\\Japanese_Temple.obj");
-	Model whiteMonster();
-	Model malboroReds();
+	Model whiteMonster("Resources\\Models\\WhiteMonster\\whiteMonster.obj");
+	Model malboroReds("Resources\\Models\\MalboroReds\\malboroReds.obj");
 
 	SkinnedMesh eagle;
 
@@ -148,6 +148,8 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glm::mat4 sphereModel = glm::mat4(1.0);
+		glm::mat4 whiteMonsterModel = glm::mat4(1.0);
+		glm::mat4 malboroRedsModel = glm::mat4(1.0);
 		glm::mat4 planeModel = glm::mat4(1.0);
 		glm::mat4 japaneseTempleModel = glm::mat4(1.0);
 		glm::mat4 view = camera.getViewMatrix();
@@ -194,22 +196,22 @@ int main()
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(japaneseTempleModel));
 		japaneseTemple.draw(basicShader);
 
-		//To be decided if keeping
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, -10.0)) * scaleMat;
-		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
-		sphere.draw(basicShader); //Draw first sphere
+		//White monsters and malboro reds
+		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, -10.0));
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
+		whiteMonster.draw(basicShader); //Draw first sphere
 
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, -10.0)) * scaleMat;
-		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
-		sphere.draw(basicShader); //Draw second sphere
+		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, -10.0));
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
+		whiteMonster.draw(basicShader); //Draw second sphere
 
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, 10.0)) * scaleMat;
-		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
-		sphere.draw(basicShader); //Draw third sphere
+		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, 10.0));
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
+		malboroReds.draw(basicShader); //Draw third sphere
 
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, 10.0)) * scaleMat;
-		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
-		sphere.draw(basicShader); //Draw fourth sphere
+		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, 10.0));
+		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
+		malboroReds.draw(basicShader); //Draw fourth sphere
 
 
 		//Render the eagle
