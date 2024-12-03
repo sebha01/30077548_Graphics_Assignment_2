@@ -9,17 +9,17 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 // Camera settings
 //							  width, heigh, near plane, far plane
-Camera_settings camera_settings{ 1800.0, 1500.0, 0.1, 100.0 };
+Camera_settings camera_settings{ 1500.0, 1200.0, 0.1, 500.0 };
 
 //Timer
 Timer timer;
 
 // Instantiate the camera object with basic data
-Camera camera(camera_settings, glm::vec3(0.0, 5.0, 12.0));
+Camera camera(camera_settings, glm::vec3(0.0, 5.0, 32.0));
 
 double lastX = camera_settings.screenWidth / 2.0f;
 double lastY = camera_settings.screenHeight / 2.0f;
-
+ 
 
 int main()
 {
@@ -32,7 +32,7 @@ int main()
 
 
 	// glfw window creation
-	GLFWwindow* window = glfwCreateWindow(camera_settings.screenWidth, camera_settings.screenHeight, "Computer Graphics: Tutorial 20", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(camera_settings.screenWidth, camera_settings.screenHeight, "30077548 Computer Graphics Assignment 2", NULL, NULL);
 	if (window == NULL)
 	{
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -96,10 +96,10 @@ int main()
 		1.0, 1.0, 0.0, 1.0 // Yellow 
 	};	// White main light 
 	GLfloat light_positions[] = {
-		5.0, 5.0, 5.0, 1.0,
-		-5.0, 5.0, 5.0, 1.0,
-		5.0, 5.0, -5.0, 1.0,
-		-5.0, 5.0, -5.0, 1.0
+		15.0, 5.0, 15.0, 1.0, //Red Light
+		-15.0, 5.0, 15.0, 1.0, //Green
+		15.0, 5.0, -15.0, 1.0, // Blue
+		-15.0, 5.0, -15.0, 1.0 //Yellow
 	};	// Point light (w=1.0)
 	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
 
