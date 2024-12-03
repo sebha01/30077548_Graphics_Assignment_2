@@ -210,7 +210,7 @@ int main()
 		whiteMonster.draw(basicShader); //Draw first sphere
 
 		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, -10.0));
-		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0)) * scaleMat;
+		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader); //Draw second sphere
 
