@@ -180,19 +180,20 @@ int main()
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(japaneseTempleModel));
 		japaneseTemple.draw(basicShader);
 
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-3.0, 3.0, -3.0)) * scaleMat;
+		//To be decided if keeping
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, -10.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
 		sphere.draw(basicShader); //Draw first sphere
 
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(3.0, 3.0, -3.0)) * scaleMat;
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, -10.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
 		sphere.draw(basicShader); //Draw second sphere
 
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-3.0, 3.0, 3.0)) * scaleMat;
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, 10.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
 		sphere.draw(basicShader); //Draw third sphere
 
-		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(3.0, 3.0, 3.0)) * scaleMat;
+		sphereModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, 10.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
 		sphere.draw(basicShader); //Draw fourth sphere
 
@@ -224,6 +225,12 @@ void processInput(GLFWwindow* window)
 		camera.processKeyboard(LEFT, cameraMoveSpeed);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.processKeyboard(RIGHT, cameraMoveSpeed);
+
+	//process input for moving dragon around
+	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
+	{
+
+	}
 }
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
