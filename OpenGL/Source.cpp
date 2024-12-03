@@ -88,7 +88,7 @@ int main()
 
 	//Light Data///////////////////////////////////////////////
 	// Lights
-	GLfloat light_ambient[] = { 0.1, 0.1, 0.1, 1.0 };	// Dim light 
+	GLfloat light_ambient[] = { 1.0, 1.0, 1.0, 1.0 };	// Dim light 
 	GLfloat light_diffusers[] = {
 		1.0, 0.0, 0.0, 1.0, // Red
 		0.0, 1.0, 0.0, 1.0, // Green
