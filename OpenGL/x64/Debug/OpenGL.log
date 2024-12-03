@@ -6,5 +6,5 @@ C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects
 C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(120,33): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(120,39): warning C4305: 'initializing': truncation from 'double' to 'GLfloat'
 C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(205,60): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(241,36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\OpenGL\Source.cpp(244,36): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
   OpenGL.vcxproj -> C:\Users\sebas\OneDrive - University of South Wales\Uni\Graphics\OpenGL Projects\30077548_Graphics_Assignment_2\x64\Debug\30077548_CW2.exe

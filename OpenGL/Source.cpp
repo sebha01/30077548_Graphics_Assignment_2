@@ -227,6 +227,7 @@ int main()
 
 		//Render the eagle
 		glm::mat4 eagleModel = glm::mat4(1.0);
+		glm::mat4 translation = glm::translate(glm::mat4(1.0), glm::vec3(0.0, 12.0, 0.0));
 		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
 		glm::mat4 rotation = glm::rotate(glm::mat4(1.0), glm::radians(12.0f), glm::vec3(0.0, 1.0, 0.0));
 
@@ -234,7 +235,9 @@ int main()
 
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-		glUniformMatrix4fv(glGetUniformLocation(modelShader, "model"), 1, GL_FALSE, glm::value_ptr(rotation* scale* eagleModel));
+
+		eagleModel = translation * rotation * scale;
+		glUniformMatrix4fv(glGetUniformLocation(modelShader, "model"), 1, GL_FALSE, glm::value_ptr(eagleModel));
 
 		//Static time
 		static float time = 0.0;
