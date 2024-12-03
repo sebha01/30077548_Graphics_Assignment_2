@@ -87,6 +87,8 @@ int main()
 	Model sphere("Resources\\Models\\Sphere.obj");
 	Model plane("Resources\\Models\\Plane.obj");
 	Model japaneseTemple("Resources\\Models\\JapaneseTemple\\Japanese_Temple.obj");
+	Model whiteMonster();
+	Model malboroReds();
 
 	SkinnedMesh eagle;
 

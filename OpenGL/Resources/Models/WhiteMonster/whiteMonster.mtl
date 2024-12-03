@@ -1,0 +1,14 @@
+# Blender 3.4.1 MTL File: 'None'
+# www.blender.org
+
+newmtl initialShadingGroup
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd MonsterUltra_em.jpg
+map_Ns initialShadingGroup_roughness.jpg
+map_refl initialShadingGroup_metallic.jpg
+map_Bump -bm 1.000000 initialShadingGroup_normal.jpg
