@@ -19,6 +19,8 @@ Camera camera(camera_settings, glm::vec3(0.0, 5.0, 32.0));
 
 double lastX = camera_settings.screenWidth / 2.0f;
 double lastY = camera_settings.screenHeight / 2.0f;
+
+bool pause = false;
  
 
 int main()
@@ -197,19 +199,28 @@ int main()
 		japaneseTemple.draw(basicShader);
 
 		//White monsters and malboro reds
+
+		static float phase = 0.0f; // variable to store the incrementing value
+		if (!pause)
+			phase += timer.getDeltaTimeSeconds() * glm::pi<float>() * 4.0;
+
 		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, -10.0));
+		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader); //Draw first sphere
 
 		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, -10.0));
+		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0)) * scaleMat;
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader); //Draw second sphere
 
 		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, 10.0));
+		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader); //Draw third sphere
 
 		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, 10.0));
+		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader); //Draw fourth sphere
 
@@ -219,7 +230,7 @@ int main()
 		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
 		glm::mat4 rotation = glm::rotate(glm::mat4(1.0), glm::radians(12.0f), glm::vec3(0.0, 1.0, 0.0));
 
-		glUseProgram(modelShader); //Use the Basic shader
+		glUseProgram(modelShader); //Use the model shader
 
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
