@@ -200,26 +200,27 @@ int main()
 
 		//White monsters and malboro reds
 
+		//Taken from week 19 tutorial on spinning an object around
 		static float phase = 0.0f; // variable to store the incrementing value
 		if (!pause)
 			phase += timer.getDeltaTimeSeconds() * glm::pi<float>() * 4.0;
 
-		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, -10.0));
+		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(-16.0, 3.0, -10.0));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader);
 
-		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, -10.0));
+		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(16.0, 3.0, -10.0));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader);
 
-		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, 10.0));
+		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(-16.0, 3.0, 10.0));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
 
-		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, 10.0));
+		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(16.0, 3.0, 10.0));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
