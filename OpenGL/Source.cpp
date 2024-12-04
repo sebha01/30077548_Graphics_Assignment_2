@@ -253,8 +253,10 @@ int main()
 		// Scale to adjust the eagle's size
 		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
 
+		glm::mat4 facingRotation = glm::rotate(glm::mat4(1.0), angle + glm::radians(180.0f), glm::vec3(0.0, 1.0, 0.0));
+
 		// Combine transformations: translation first, then scale
-		eagleModel = translation * scale;
+		eagleModel = translation * facingRotation * scale;
 
 		glUseProgram(modelShader); //Use the model shader
 
