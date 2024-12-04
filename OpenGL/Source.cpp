@@ -112,10 +112,10 @@ int main()
 		1.0, 1.0, 0.0, 1.0 // Yellow 
 	};	// White main light 
 	GLfloat light_positions[] = {
-		15.0, 5.0, 15.0, 1.0, //Red Light
-		-15.0, 5.0, 15.0, 1.0, //Green
-		15.0, 5.0, -15.0, 1.0, // Blue
-		-15.0, 5.0, -15.0, 1.0 //Yellow
+		25.0, 5.0, 15.0, 1.0, //Red Light
+		-25.0, 5.0, 15.0, 1.0, //Green
+		25.0, 5.0, -15.0, 1.0, // Blue
+		-25.0, 5.0, -15.0, 1.0 //Yellow
 	};	// Point light (w=1.0)
 	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
 
