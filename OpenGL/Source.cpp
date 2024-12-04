@@ -69,6 +69,11 @@ int main()
 
 	GLuint basicShader;
 	GLuint modelShader;
+	GLuint depthShader;
+	GLuint perPixelShader;
+	GLuint perVertexShader;
+	GLuint shadowShader;
+	GLuint specTextureShader;
 
 	// Texture container
 	GLuint metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
@@ -84,6 +89,39 @@ int main()
 		string("Resources\\Shaders\\ModelShader.vert"),
 		string("Resources\\Shaders\\ModelShader.frag"),
 		&modelShader);
+
+	/////////////////////////////////////////////////////////
+	//Shader set ups that are to be evaluated once created
+	//depth shader
+	glsl_err = ShaderLoader::createShaderProgram(
+		string("Resources\\Shaders\\Depth_shader.vert"),
+		string("Resources\\Shaders\\Depth_shader.frag"),
+		&depthShader);
+
+	//perPixel shader
+	glsl_err = ShaderLoader::createShaderProgram(
+		string("Resources\\Shaders\\Per_Pixel.vert"),
+		string("Resources\\Shaders\\Per_Pixel.frag"),
+		&perPixelShader);
+
+	//perVertex shader
+	glsl_err = ShaderLoader::createShaderProgram(
+		string("Resources\\Shaders\\Per_Vertex.vert"),
+		string("Resources\\Shaders\\Per_Vertex.frag"),
+		&perVertexShader);
+
+	//Shadow shader
+	glsl_err = ShaderLoader::createShaderProgram(
+		string("Resources\\Shaders\\Shadow_shader.vert"),
+		string("Resources\\Shaders\\Shadow_shader.frag"),
+		&shadowShader);
+
+	//specular texture shader
+	glsl_err = ShaderLoader::createShaderProgram(
+		string("Resources\\Shaders\\SpecTexture_Shader.vert"),
+		string("Resources\\Shaders\\SpecTexture_Shader.frag"),
+		&specTextureShader);
+	/////////////////////////////////////////////////////////
 
 
 	Model sphere("Resources\\Models\\Sphere.obj");
