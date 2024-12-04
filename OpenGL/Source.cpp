@@ -207,22 +207,22 @@ int main()
 		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, -10.0));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
-		whiteMonster.draw(basicShader); //Draw first sphere
+		whiteMonster.draw(basicShader);
 
 		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, -10.0));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
-		whiteMonster.draw(basicShader); //Draw second sphere
+		whiteMonster.draw(basicShader);
 
 		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(-10.0, 3.0, 10.0));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
-		malboroReds.draw(basicShader); //Draw third sphere
+		malboroReds.draw(basicShader);
 
 		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(10.0, 3.0, 10.0));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
-		malboroReds.draw(basicShader); //Draw fourth sphere
+		malboroReds.draw(basicShader);
 
 
 		//Render the eagle
@@ -230,29 +230,12 @@ int main()
 		//Static time
 		static float time = 0.0;
 		time += timer.getDeltaTimeSeconds();
-
-		//glm::mat4 eagleModel = glm::mat4(1.0);
-		//glm::mat4 translation = glm::translate(glm::mat4(1.0), glm::vec3(15.0, 12.0, 0.0));
-		//glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
-		//glm::mat4 rotation = glm::mat4(1.0);
-		////glm::mat4 rotation = glm::rotate(glm::mat4(1.0), glm::radians(12.0f), glm::vec3(0.0, 1.0, 0.0));
-
-		/////////////////////
-		// CURRENTLY WORKING ON
-		// /////////////////
-		// Calculate the angle for circular motion (e.g., 30 degrees per second)
 		float angle = glm::radians(30.0f) * time; // Adjust speed with 30.0f
 
-		// Define the transformation matrices
 		glm::mat4 eagleModel = glm::mat4(1.0);
-
-		// Apply rotation around the Y-axis to make the eagle circle
 		glm::mat4 rotation = glm::rotate(glm::mat4(1.0), angle, glm::vec3(0.0, 1.0, 0.0));
-		// New translation to the rotated position
 		glm::mat4 translation = glm::translate(glm::mat4(1.0), glm::vec3(rotation * glm::vec4(15.0, 12.0, 0.0, 1.0)));
-		// Scale to adjust the eagle's size
 		glm::mat4 scale = glm::scale(glm::mat4(1.0), glm::vec3(0.01, 0.01, 0.01));
-
 		glm::mat4 facingRotation = glm::rotate(glm::mat4(1.0), angle + glm::radians(180.0f), glm::vec3(0.0, 1.0, 0.0));
 
 		// Combine transformations: translation first, then scale
@@ -262,11 +245,9 @@ int main()
 
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-
-		//eagleModel = translation * rotation * scale;
 		glUniformMatrix4fv(glGetUniformLocation(modelShader, "model"), 1, GL_FALSE, glm::value_ptr(eagleModel));
 
-		//Animations are 0 and 1
+		//Animations are 0 - 2
 		eagle.BoneTransform(time, Transforms, 1);
 
 		for (int i = 0; i < numberOfBones; i++)
