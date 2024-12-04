@@ -156,8 +156,6 @@ int main()
 		glm::mat4 japaneseTempleModel = glm::mat4(1.0);
 		glm::mat4 view = camera.getViewMatrix();
 		glm::mat4 projection = camera.getProjectionMatrix();
-
-		glm::mat4 scaleMat = glm::scale(glm::mat4(1.0), glm::vec3(0.3, 0.3, 0.3));
 		glm::vec3 eyePos = camera.getCameraPosition();
 
 
@@ -205,22 +203,26 @@ int main()
 		if (!pause)
 			phase += timer.getDeltaTimeSeconds() * glm::pi<float>() * 4.0;
 
-		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(-16.0, 3.0, -10.0));
+		whiteMonsterModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
+		whiteMonsterModel = glm::translate(whiteMonsterModel, glm::vec3(-14.0, 1.0, -10.0));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader);
 
-		whiteMonsterModel = glm::translate(glm::mat4(1.0), glm::vec3(16.0, 3.0, -10.0));
+		whiteMonsterModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
+		whiteMonsterModel = glm::translate(whiteMonsterModel, glm::vec3(14.0, 1.0, -10.0));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader);
 
-		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(-16.0, 3.0, 10.0));
+		malboroRedsModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
+		malboroRedsModel = glm::translate(malboroRedsModel, glm::vec3(-14.0, 1.0, 10.0));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
 
-		malboroRedsModel = glm::translate(glm::mat4(1.0), glm::vec3(16.0, 3.0, 10.0));
+		malboroRedsModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
+		malboroRedsModel = glm::translate(malboroRedsModel, glm::vec3(14.0, 1.0, 10.0));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
