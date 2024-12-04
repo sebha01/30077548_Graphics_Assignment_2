@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Basic_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Basic_shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -13,14 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\ModelShader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\ModelShader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Basic_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Basic_shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,36 +30,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Source.cpp",
               "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp",
               "RelativeDocumentMoniker": "OpenGL\\Source.cpp",
               "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp",
               "RelativeToolTip": "OpenGL\\Source.cpp",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAUwGAAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAUwHsAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-11-19T21:30:26.497Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ModelShader.frag",
-              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\ModelShader.frag",
-              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\ModelShader.frag",
-              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\ModelShader.frag",
-              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\ModelShader.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-03T17:58:39.234Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "ModelShader.vert",
               "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\ModelShader.vert",
               "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\ModelShader.vert",
@@ -71,7 +59,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Basic_shader.vert",
               "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.vert",
               "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\Basic_shader.vert",
@@ -79,19 +67,33 @@
               "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Basic_shader.vert",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-02T11:43:21.625Z"
+              "WhenOpened": "2024-12-02T11:43:21.625Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Basic_shader.frag",
               "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.frag",
               "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\Basic_shader.frag",
               "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.frag",
               "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Basic_shader.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-02T11:43:21.136Z"
+              "WhenOpened": "2024-12-02T11:43:21.136Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ModelShader.frag",
+              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\ModelShader.frag",
+              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\ModelShader.frag",
+              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\ModelShader.frag",
+              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\ModelShader.frag",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-12-03T17:58:39.234Z"
             }
           ]
         }
