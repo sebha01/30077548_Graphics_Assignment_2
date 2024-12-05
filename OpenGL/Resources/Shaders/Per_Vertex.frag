@@ -10,7 +10,7 @@ out vec4 FragColor;
 
 void main()
 {
-	//vec4 finalColour = texture(texture_diffuse1, TexCoord) * LightData;
-	vec4 finalColour = vec4(1.0, 1.0, 1.0, 1.0) * LightData; //Ignore texture colour
+	vec4 finalColour = texture(texture_diffuse1, TexCoord) * LightData;
+	//vec4 finalColour = vec4(1.0, 1.0, 1.0, 1.0) * LightData; //Ignore texture colour
 	FragColor = finalColour;
 }

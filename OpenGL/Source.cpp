@@ -125,6 +125,7 @@ int main()
 
 
 	Model sphere("Resources\\Models\\Sphere.obj");
+	Model rockySphere("Resources\\Models\\RockySphere\\RockySphere.obj");
 	Model plane("Resources\\Models\\Plane.obj");
 	Model japaneseTemple("Resources\\Models\\JapaneseTemple\\Japanese_Temple.obj");
 	Model whiteMonster("Resources\\Models\\WhiteMonster\\whiteMonster.obj");
@@ -197,6 +198,7 @@ int main()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glm::mat4 sphereModel = glm::mat4(1.0);
+		glm::mat4 rockySphereModel = glm::mat4(1.0);
 		glm::mat4 whiteMonsterModel = glm::mat4(1.0);
 		glm::mat4 malboroRedsModel = glm::mat4(1.0);
 		glm::mat4 planeModel = glm::mat4(1.0);
@@ -220,10 +222,10 @@ int main()
 		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
 		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
-		sphereModel = glm::translate(sphereModel, glm::vec3(-48.0, 5.0, -41.0));
-		sphereModel = glm::rotate(sphereModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
-		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
-		sphere.draw(perVertexShader);
+		rockySphereModel = glm::translate(rockySphereModel, glm::vec3(-48.0, 5.0, -41.0));
+		rockySphereModel = glm::rotate(rockySphereModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
+		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "model"), 1, GL_FALSE, glm::value_ptr(rockySphereModel));
+		rockySphere.draw(perVertexShader);
 
 		glUseProgram(basicShader); //Use the Basic shader
 
