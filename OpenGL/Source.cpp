@@ -211,32 +211,49 @@ int main()
 		static float phase = 0.0f; // variable to store the incrementing value
 		if (!pause)
 			phase += timer.getDeltaTimeSeconds() * glm::pi<float>() * 4.0;
-
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		//DRAW THE SPHERE OBJECT WITH ROCKY TEXTURE USING THE PER VERTEX SHADER
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		glUseProgram(perVertexShader);
+
+		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
 		GLint perVertexLightDirectionLoc = glGetUniformLocation(perVertexShader, "lightDirection");
 		GLint perVertexLightDiffuseLoc = glGetUniformLocation(perVertexShader, "lightDiffuseColour");
 		glUniform4f(perVertexLightDirectionLoc, -27.0, 5.0, -18.0, 1.0);
 		glUniform4f(perVertexLightDiffuseLoc, 1.0, 1.0, 0.0, 1.0);
-
-		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
-		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-
+		
 		rockySphereModel = glm::translate(rockySphereModel, glm::vec3(-48.0, 5.0, -41.0));
 		rockySphereModel = glm::rotate(rockySphereModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "model"), 1, GL_FALSE, glm::value_ptr(rockySphereModel));
 		rockySphere.draw(perVertexShader);
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// DRAW SPHERE OBJECT WITH METALLIC TEXTURE USING THE PER PIXEL SHADER
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		glUseProgram(perPixelShader);
+
+		glUniformMatrix4fv(glGetUniformLocation(perPixelShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(glGetUniformLocation(perPixelShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+		GLint perPixelLightDirectionLoc = glGetUniformLocation(perPixelShader, "lightDirection");
+		GLint perPixelLightDiffuseLoc = glGetUniformLocation(perPixelShader, "lightDiffuseColour");
+		glUniform4f(perPixelLightDirectionLoc, 27.0, 5.0, 18.0, 1.0);
+		glUniform4f(perPixelLightDiffuseLoc, 0.5f, 1.0f, 0.3f, 0.6f);
+
+		sphereModel = glm::translate(sphereModel, glm::vec3(48.0, 5.0, 41.0));
+		sphereModel = glm::rotate(sphereModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
+		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
+		sphere.draw(perPixelShader); //Render the model
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// DRAW THE DIFFERENT COLOUR LIGHTS, MONSTER'S AND MALBORO'S USING THE BASIC SHADER
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		glUseProgram(basicShader); //Use the Basic shader
-
-		//Move lights around
-		/*static double time = 0.0;
-		time += timer.getDeltaTimeSeconds();
-		light_positions[1] += sin(float(time));
-		light_positions[5] += sin(float(time));
-		light_positions[9] += sin(float(time));
-		light_positions[13] += sin(float(time));*/
-
 
 		//Pass the uniform data to Basic shader///////////////////////////////////
 		//Pass the light data
@@ -290,10 +307,9 @@ int main()
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
-
-
-		//Render the eagle
-
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+		// RENDER THE EAGLE USING THE MODEL SHADER
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		//Static time
 		static float time = 0.0;
 		time += timer.getDeltaTimeSeconds();
@@ -325,6 +341,7 @@ int main()
 		}
 
 		eagle.Render(basicShader);
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// glfw: swap buffers and poll events
 		glfwSwapBuffers(window);

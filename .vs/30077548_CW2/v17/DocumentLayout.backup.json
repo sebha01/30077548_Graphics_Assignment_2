@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Vertex.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Per_Vertex.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Pixel.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Per_Pixel.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Vertex.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Per_Vertex.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Pixel.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Per_Pixel.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\Basic_shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,40 +27,28 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Per_Vertex.vert",
-              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Vertex.vert",
-              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\Per_Vertex.vert",
-              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Vertex.vert",
-              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Per_Vertex.vert",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvw8AAAA7AAAAAAAAAA==",
+              "Title": "Per_Pixel.frag",
+              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Pixel.frag",
+              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\Per_Pixel.frag",
+              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Pixel.frag",
+              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Per_Pixel.frag",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-05T11:17:43.141Z",
+              "WhenOpened": "2024-12-05T13:51:04.326Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Per_Vertex.frag",
-              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Vertex.frag",
-              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\Per_Vertex.frag",
-              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Vertex.frag",
-              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Per_Vertex.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvw8AAAABAAAAAAAAAA==",
+              "Title": "Per_Pixel.vert",
+              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Pixel.vert",
+              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\Per_Pixel.vert",
+              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Per_Pixel.vert",
+              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Per_Pixel.vert",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-05T11:17:42.556Z",
+              "WhenOpened": "2024-12-05T13:51:03.853Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Basic_shader.frag",
-              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.frag",
-              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\Basic_shader.frag",
-              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\Basic_shader.frag",
-              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\Basic_shader.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-05T10:50:44.582Z"
             },
             {
               "$type": "Document",
@@ -74,9 +58,9 @@
               "RelativeDocumentMoniker": "OpenGL\\Source.cpp",
               "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp",
               "RelativeToolTip": "OpenGL\\Source.cpp",
-              "ViewState": "AgIAALEAAAAAAAAAAAAAALYAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAMAAAAAAAAAAAADwv/QAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-11-19T21:30:26.497Z",
+              "WhenOpened": "2024-12-05T13:50:57.319Z",
               "EditorCaption": ""
             }
           ]
