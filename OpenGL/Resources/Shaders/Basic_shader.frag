@@ -11,9 +11,9 @@ uniform sampler2D texture_diffuse1;
 uniform vec3 eyePos;
 
 //Light information
-uniform vec4		lightPositions[4];
+uniform vec4		lightPositions[5];
 uniform vec4		lightAmbient;
-uniform vec4		lightDiffusers[4];
+uniform vec4		lightDiffusers[5];
 uniform vec3		lightAttenuation; // x=constant, y=linear, z=quadratic (x<0 means light is not active)
 
 //Material iformation
@@ -24,7 +24,7 @@ uniform float       matSpecularExponent;
 
 out vec4 FragColour;
 
-vec4 Lights[4];
+vec4 Lights[5];
 
 //Function prototype
 vec4 calculateLight(vec4 lightPosition, vec4 lightDiffuse);
@@ -32,12 +32,12 @@ vec4 calculateLight(vec4 lightPosition, vec4 lightDiffuse);
 void main()
 {
 	//Calling the light functions
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		Lights[i] = calculateLight(lightPositions[i], lightDiffusers[i]);
 	}
 
-	FragColour = Lights[0] + Lights[1] + Lights[2] + Lights[3];
+	FragColour = Lights[0] + Lights[1] + Lights[2] + Lights[3] + Lights[4];
 }
 
 vec4 calculateLight(vec4 lightPosition, vec4 lightDiffuse)
