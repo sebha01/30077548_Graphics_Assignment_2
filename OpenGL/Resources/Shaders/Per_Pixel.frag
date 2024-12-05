@@ -23,7 +23,7 @@ void main()
 
 	vec4 textureColor = texture(texture_diffuse1, TexCoord);
 
-	vec4 finalColour = LightData * textureColour;
+	vec4 finalColour = LightData * textureColor;
 
 	FragColor = finalColour;
 }

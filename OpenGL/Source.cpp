@@ -90,14 +90,6 @@ int main()
 		string("Resources\\Shaders\\ModelShader.frag"),
 		&modelShader);
 
-	/////////////////////////////////////////////////////////
-	//Shader set ups that are to be evaluated once created
-	//depth shader
-	glsl_err = ShaderLoader::createShaderProgram(
-		string("Resources\\Shaders\\Depth_shader.vert"),
-		string("Resources\\Shaders\\Depth_shader.frag"),
-		&depthShader);
-
 	//perPixel shader
 	glsl_err = ShaderLoader::createShaderProgram(
 		string("Resources\\Shaders\\Per_Pixel.vert"),
@@ -109,20 +101,6 @@ int main()
 		string("Resources\\Shaders\\Per_Vertex.vert"),
 		string("Resources\\Shaders\\Per_Vertex.frag"),
 		&perVertexShader);
-
-	//Shadow shader
-	glsl_err = ShaderLoader::createShaderProgram(
-		string("Resources\\Shaders\\Shadow_shader.vert"),
-		string("Resources\\Shaders\\Shadow_shader.frag"),
-		&shadowShader);
-
-	//specular texture shader
-	glsl_err = ShaderLoader::createShaderProgram(
-		string("Resources\\Shaders\\SpecTexture_Shader.vert"),
-		string("Resources\\Shaders\\SpecTexture_Shader.frag"),
-		&specTextureShader);
-	/////////////////////////////////////////////////////////
-
 
 	Model sphere("Resources\\Models\\Sphere.obj");
 	Model rockySphere("Resources\\Models\\RockySphere\\RockySphere.obj");
@@ -156,14 +134,6 @@ int main()
 		-27.0, 5.0, -18.0, 1.0, //Yellow
 		27.0, 5.0, -18.0, 1.0 // Blue
 	};	// Point light (w=1.0)
-	
-
-	GLfloat perPixelLightDiffuser[] = { 0.0, 0.0, 1.0, 1.0 }; // Blue
-	GLfloat perPixelLightPosition[] = { 27.0, 5.0, -18.0, 1.0 }; // Blue
-	
-	//GLfloat perVertexLightDiffuser[] = {}; // Yellow
-	//GLfloat perVertexLightLocation[] = {};//Yellow
-		
 	 
 	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
 
@@ -211,6 +181,8 @@ int main()
 		static float phase = 0.0f; // variable to store the incrementing value
 		if (!pause)
 			phase += timer.getDeltaTimeSeconds() * glm::pi<float>() * 4.0;
+
+
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		//DRAW THE SPHERE OBJECT WITH ROCKY TEXTURE USING THE PER VERTEX SHADER
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,13 +194,16 @@ int main()
 		GLint perVertexLightDirectionLoc = glGetUniformLocation(perVertexShader, "lightDirection");
 		GLint perVertexLightDiffuseLoc = glGetUniformLocation(perVertexShader, "lightDiffuseColour");
 		glUniform4f(perVertexLightDirectionLoc, -27.0, 5.0, -18.0, 1.0);
-		glUniform4f(perVertexLightDiffuseLoc, 1.0, 1.0, 0.0, 1.0);
+		glUniform4f(perVertexLightDiffuseLoc, 0.0, 1.0, 0.0, 1.0);
 		
 		rockySphereModel = glm::translate(rockySphereModel, glm::vec3(-48.0, 5.0, -41.0));
 		rockySphereModel = glm::rotate(rockySphereModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "model"), 1, GL_FALSE, glm::value_ptr(rockySphereModel));
 		rockySphere.draw(perVertexShader);
+
+		glUseProgram(0);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		// DRAW SPHERE OBJECT WITH METALLIC TEXTURE USING THE PER PIXEL SHADER
@@ -241,12 +216,14 @@ int main()
 		GLint perPixelLightDirectionLoc = glGetUniformLocation(perPixelShader, "lightDirection");
 		GLint perPixelLightDiffuseLoc = glGetUniformLocation(perPixelShader, "lightDiffuseColour");
 		glUniform4f(perPixelLightDirectionLoc, 27.0, 5.0, 18.0, 1.0);
-		glUniform4f(perPixelLightDiffuseLoc, 0.5f, 1.0f, 0.3f, 0.6f);
+		glUniform4f(perPixelLightDiffuseLoc, 0.0f, 1.0f, 1.0f, 1.0f);
 
 		sphereModel = glm::translate(sphereModel, glm::vec3(48.0, 5.0, 41.0));
 		sphereModel = glm::rotate(sphereModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
 		sphere.draw(perPixelShader); //Render the model
+
+		glUseProgram(0);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -307,6 +284,11 @@ int main()
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
+
+		glUseProgram(0);
+		///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		// RENDER THE EAGLE USING THE MODEL SHADER
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -341,6 +323,8 @@ int main()
 		}
 
 		eagle.Render(basicShader);
+
+		glUseProgram(0);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// glfw: swap buffers and poll events
