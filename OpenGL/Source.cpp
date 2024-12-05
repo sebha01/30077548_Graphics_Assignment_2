@@ -146,15 +146,24 @@ int main()
 	GLfloat light_diffusers[] = {
 		1.0, 0.0, 0.0, 1.0, // Red
 		0.0, 1.0, 0.0, 1.0, // Green
-		0.0, 0.0, 1.0, 1.0, // Blue
-		1.0, 1.0, 0.0, 1.0 // Yellow 
+		1.0, 1.0, 0.0, 1.0, //Yellow
+		0.0, 0.0, 1.0, 1.0 //Blue
 	};	// White main light 
 	GLfloat light_positions[] = {
 		27.0, 5.0, 18.0, 1.0, //Red Light
 		-27.0, 5.0, 18.0, 1.0, //Green
-		27.0, 5.0, -18.0, 1.0, // Blue
-		-27.0, 5.0, -18.0, 1.0 //Yellow
+		-27.0, 5.0, -18.0, 1.0, //Yellow
+		27.0, 5.0, -18.0, 1.0 // Blue
 	};	// Point light (w=1.0)
+	
+
+	GLfloat perPixelLightDiffuser[] = { 0.0, 0.0, 1.0, 1.0 }; // Blue
+	GLfloat perPixelLightPosition[] = { 27.0, 5.0, -18.0, 1.0 }; // Blue
+	
+	//GLfloat perVertexLightDiffuser[] = {}; // Yellow
+	//GLfloat perVertexLightLocation[] = {};//Yellow
+		
+	 
 	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
 
 	// Materials
@@ -196,6 +205,25 @@ int main()
 		glm::mat4 projection = camera.getProjectionMatrix();
 		glm::vec3 eyePos = camera.getCameraPosition();
 
+		//Taken from week 19 tutorial on spinning an object around
+		static float phase = 0.0f; // variable to store the incrementing value
+		if (!pause)
+			phase += timer.getDeltaTimeSeconds() * glm::pi<float>() * 4.0;
+
+		glUseProgram(perVertexShader);
+
+		GLint perVertexLightDirectionLoc = glGetUniformLocation(perVertexShader, "lightDirection");
+		GLint perVertexLightDiffuseLoc = glGetUniformLocation(perVertexShader, "lightDiffuseColour");
+		glUniform4f(perVertexLightDirectionLoc, -27.0, 5.0, -18.0, 1.0);
+		glUniform4f(perVertexLightDiffuseLoc, 1.0, 1.0, 0.0, 1.0);
+
+		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+
+		sphereModel = glm::translate(sphereModel, glm::vec3(-48.0, 5.0, -41.0));
+		sphereModel = glm::rotate(sphereModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
+		glUniformMatrix4fv(glGetUniformLocation(perVertexShader, "model"), 1, GL_FALSE, glm::value_ptr(sphereModel));
+		sphere.draw(perVertexShader);
 
 		glUseProgram(basicShader); //Use the Basic shader
 
@@ -216,6 +244,7 @@ int main()
 		glUniform3fv(uLightAttenuation, 1, (GLfloat*)&attenuation);
 		glUniform3fv(uEyePos, 1, (GLfloat*)&eyePos);
 
+
 		//Pass material data
 		glUniform4fv(uMatAmbient, 1, (GLfloat*)&mat_amb_diff);
 		glUniform4fv(uMatDiffuse, 1, (GLfloat*)&mat_amb_diff);
@@ -235,11 +264,6 @@ int main()
 		japaneseTemple.draw(basicShader);
 
 		//White monsters and malboro reds
-
-		//Taken from week 19 tutorial on spinning an object around
-		static float phase = 0.0f; // variable to store the incrementing value
-		if (!pause)
-			phase += timer.getDeltaTimeSeconds() * glm::pi<float>() * 4.0;
 
 		whiteMonsterModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
 		whiteMonsterModel = glm::translate(whiteMonsterModel, glm::vec3(-14.0, 1.0, -10.0));
