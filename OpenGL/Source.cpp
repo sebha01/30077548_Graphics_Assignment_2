@@ -143,10 +143,6 @@ int main()
 	GLuint perPixelShader;
 	GLuint perVertexShader;
 
-	// Texture container
-	GLuint metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
-	GLuint grassTexture = TextureLoader::loadTexture("Resources\\Models\\Grass\\grassTexture.jpg");  // Texture obtained from https://www.turbosquid.com/3d-models/3d-grassland-duco-3d-1822648
-
 	// build and compile our shader program
 	//Basic shader
 	GLSL_ERROR glsl_err = ShaderLoader::createShaderProgram(
@@ -180,15 +176,18 @@ int main()
 	Model whiteMonster("Resources\\Models\\WhiteMonster\\whiteMonster.obj"); //From https://sketchfab.com/3d-models/monster-zero-ultra-986ced4c8260460280120f4c776f58b7
 	Model malboroReds("Resources\\Models\\MalboroReds\\malboroReds.obj"); //Obtained from  https://sketchfab.com/3d-models/marlboro-pack-of-20-cigarettes-4eb251a5b2874b3ea329da82db428a5d
 
+	// Texture container
+	GLuint metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
+	GLuint grassTexture = TextureLoader::loadTexture("Resources\\Models\\Grass\\grassTexture.jpg");  // Texture obtained from https://www.turbosquid.com/3d-models/3d-grassland-duco-3d-1822648
+	sphere.attachTexture(metalTex);
+	plane.attachTexture(grassTexture);
+
 	SkinnedMesh eagle;
 
 	eagle.LoadMesh("Resources\\Models\\Eagle\\eagle.fbx"); //Gotten from https://www.turbosquid.com/3d-models/eagle-rigged-fbx-free/1045001
 
 	const int numberOfBones = eagle.NumBones();
 	vector<glm::mat4> Transforms;
-
-	sphere.attachTexture(metalTex);
-	plane.attachTexture(grassTexture);
 
 	//Light Data///////////////////////////////////////////////
 	// Lights
@@ -205,7 +204,7 @@ int main()
 		-27.0, 5.0, 18.0, 1.0, //Green
 		-27.0, 5.0, -18.0, 1.0, //Yellow
 		27.0, 5.0, -18.0, 1.0, // Blue
-		0.0, 20.0, 0.0, 1.0 // White light above tower
+		0.0, 25.0, 0.0, 1.0 // White light above tower
 	};	// Point light (w=1.0)
 	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
 	
