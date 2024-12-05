@@ -5,14 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Source.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\SpecTexture_Shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\SpecTexture_Shader.vert||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\SpecTexture_Shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{B4C807B0-6752-4CA0-BA67-69318AF29690}|OpenGL\\OpenGL.vcxproj|solutionrelative:OpenGL\\Resources\\Shaders\\SpecTexture_Shader.frag||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,35 +24,9 @@
               "RelativeDocumentMoniker": "OpenGL\\Source.cpp",
               "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Source.cpp",
               "RelativeToolTip": "OpenGL\\Source.cpp",
-              "ViewState": "AgIAAPQAAAAAAAAAAAAAACEBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOQAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-12-05T13:50:57.319Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SpecTexture_Shader.vert",
-              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\SpecTexture_Shader.vert",
-              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\SpecTexture_Shader.vert",
-              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\SpecTexture_Shader.vert",
-              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\SpecTexture_Shader.vert",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-05T14:45:13.377Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SpecTexture_Shader.frag",
-              "DocumentMoniker": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\SpecTexture_Shader.frag",
-              "RelativeDocumentMoniker": "OpenGL\\Resources\\Shaders\\SpecTexture_Shader.frag",
-              "ToolTip": "C:\\Users\\sebas\\OneDrive - University of South Wales\\Uni\\Graphics\\OpenGL Projects\\30077548_Graphics_Assignment_2\\OpenGL\\Resources\\Shaders\\SpecTexture_Shader.frag",
-              "RelativeToolTip": "OpenGL\\Resources\\Shaders\\SpecTexture_Shader.frag",
-              "ViewState": "AgIAAAAAAAAAAAAAAADwvxUAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-12-05T14:45:11.363Z",
               "EditorCaption": ""
             }
           ]

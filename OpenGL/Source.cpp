@@ -69,11 +69,8 @@ int main()
 
 	GLuint basicShader;
 	GLuint modelShader;
-	GLuint depthShader;
 	GLuint perPixelShader;
 	GLuint perVertexShader;
-	GLuint shadowShader;
-	GLuint specTextureShader;
 
 	// Texture container
 	GLuint metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
@@ -134,7 +131,6 @@ int main()
 		-27.0, 5.0, -18.0, 1.0, //Yellow
 		27.0, 5.0, -18.0, 1.0 // Blue
 	};	// Point light (w=1.0)
-	 
 	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
 
 	// Materials
@@ -231,7 +227,6 @@ int main()
 		// DRAW THE DIFFERENT COLOUR LIGHTS, MONSTER'S AND MALBORO'S USING THE BASIC SHADER
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
 		glUseProgram(basicShader); //Use the Basic shader
-
 		//Pass the uniform data to Basic shader///////////////////////////////////
 		//Pass the light data
 		glUniform4fv(uLightDiffusers, 4, (GLfloat*)&light_diffusers);

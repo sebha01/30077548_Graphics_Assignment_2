@@ -150,18 +150,12 @@
   <ItemGroup>
     <None Include="Resources\Shaders\Basic_shader.frag" />
     <None Include="Resources\Shaders\Basic_shader.vert" />
-    <None Include="Resources\Shaders\Depth_shader.frag" />
-    <None Include="Resources\Shaders\Depth_shader.vert" />
     <None Include="Resources\Shaders\ModelShader.frag" />
     <None Include="Resources\Shaders\ModelShader.vert" />
     <None Include="Resources\Shaders\Per_Pixel.frag" />
     <None Include="Resources\Shaders\Per_Pixel.vert" />
     <None Include="Resources\Shaders\Per_Vertex.frag" />
     <None Include="Resources\Shaders\Per_Vertex.vert" />
-    <None Include="Resources\Shaders\Shadow_shader.frag" />
-    <None Include="Resources\Shaders\Shadow_shader.vert" />
-    <None Include="Resources\Shaders\SpecTexture_Shader.frag" />
-    <None Include="Resources\Shaders\SpecTexture_Shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
