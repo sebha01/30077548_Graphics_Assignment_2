@@ -1,5 +1,35 @@
 #include "Includes.h"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+	WELCOME TO MY SECOND GRAPHICS ASSIGNMENT PROJECT, THE CONTROLS FOR MOVING THE MONSTER CANS AND THE MALBORO REDS ARE
+	LEFT, RIGHT, UP AND DOWN KEYS AND YOU CAN SWITCH BETWEEN THE OBJECTS THERE BY PRESSING Q AND E. 
+
+	THE LINK TO THE REPOSITORY FOR THIS PROJECT IS : 
+	https://github.com/sebha01/30077548_Graphics_Assignment_2.git
+
+	ALL ASSETS USED AND THEIR LICENSES HAVE BEEN DOCUMENTED IN THIS ISSUE: 
+	https://github.com/sebha01/30077548_Graphics_Assignment_2/issues/3
+
+	IF YOU CANNOT SEE WHERE THE LICENSES FOR THE ASSETS ARE THEN HERE IS A LIST BELOW:
+
+	- GRASS -> https://blog.turbosquid.com/turbosquid-3d-model-license/
+	- JAPANESE TEMPLE -> https://blog.turbosquid.com/turbosquid-3d-model-license/
+	- EAGLE -> https://blog.turbosquid.com/turbosquid-3d-model-license/
+	- WHITE MONSTER -> https://creativecommons.org/licenses/by/4.0/ CREDIT TO ARTIST ->  https://sketchfab.com/beanlet
+	- MALBORO REDS -> https://creativecommons.org/licenses/by/4.0/ CREDIT TO ARTIST -> https://sketchfab.com/vmek3d
+
+	BUT YOU WILL ALSO FIND THE COMMENT ENTAILING THE SOURCE WITHIN THIS SOURCE.CPP FILE ABOVE WHERE THE MODELS 
+	AND TEXTURES ARE INITIALISED.
+
+	YOU WILL FIND THE MOST UP TO DATE RELEASE OF THIS ASSIGNMENT WITHIN THE RELEASES TAB AND IT WILL BE A ZIP FILE NAMED ->
+	30077548_GRAPHICS_ASSIGNMENT_2.ZIP
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 // Function prototypes
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -7,6 +37,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void processInput(GLFWwindow* window);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
+//GLOBAL VARIABLES
 // Camera settings
 //							  width, heigh, near plane, far plane
 Camera_settings camera_settings{ 1500.0, 1200.0, 0.1, 500.0 };
@@ -22,7 +53,6 @@ double lastY = camera_settings.screenHeight / 2.0f;
 
 bool pause = false;
 
-//Global object position data makes it easier for updating object movement later
 //Object position data for the white monsters and malboros
 vector<float> objectXPositions =
 {
@@ -63,6 +93,7 @@ vector<float> defaultObjectYPositions =
 //bool variable so it doesn't get wierd with selecting the different objects
 bool keyPressed = false;
 
+//MAIN
 int main()
 {
 	// glfw: initialize and configure
@@ -114,14 +145,16 @@ int main()
 
 	// Texture container
 	GLuint metalTex = TextureLoader::loadTexture("Resources\\Models\\metal_texture.png");
-	GLuint grassTexture = TextureLoader::loadTexture("Resources\\Models\\Grass\\grassTexture.jpg");
+	GLuint grassTexture = TextureLoader::loadTexture("Resources\\Models\\Grass\\grassTexture.jpg");  // Texture obtained from https://www.turbosquid.com/3d-models/3d-grassland-duco-3d-1822648
 
 	// build and compile our shader program
+	//Basic shader
 	GLSL_ERROR glsl_err = ShaderLoader::createShaderProgram(
 		string("Resources\\Shaders\\Basic_shader.vert"),
 		string("Resources\\Shaders\\Basic_shader.frag"),
 		&basicShader);
 
+	//Shader used for the Skinned mesh eagle model
 	glsl_err = ShaderLoader::createShaderProgram(
 		string("Resources\\Shaders\\ModelShader.vert"),
 		string("Resources\\Shaders\\ModelShader.frag"),
@@ -139,16 +172,17 @@ int main()
 		string("Resources\\Shaders\\Per_Vertex.frag"),
 		&perVertexShader);
 
+	//Models
 	Model sphere("Resources\\Models\\Sphere.obj");
-	Model rockySphere("Resources\\Models\\RockySphere\\RockySphere.obj");
+	Model rockySphere("Resources\\Models\\RockySphere\\RockySphere.obj"); //Rocky Texture obtained from https://freepbr.com/product/stylized-chunky-rockface/
 	Model plane("Resources\\Models\\Plane.obj");
-	Model japaneseTemple("Resources\\Models\\JapaneseTemple\\Japanese_Temple.obj");
-	Model whiteMonster("Resources\\Models\\WhiteMonster\\whiteMonster.obj");
-	Model malboroReds("Resources\\Models\\MalboroReds\\malboroReds.obj");
+	Model japaneseTemple("Resources\\Models\\JapaneseTemple\\Japanese_Temple.obj"); //From https://www.turbosquid.com/3d-models/japanese-temple-3d-model-1375828
+	Model whiteMonster("Resources\\Models\\WhiteMonster\\whiteMonster.obj"); //From https://sketchfab.com/3d-models/monster-zero-ultra-986ced4c8260460280120f4c776f58b7
+	Model malboroReds("Resources\\Models\\MalboroReds\\malboroReds.obj"); //Obtained from  https://sketchfab.com/3d-models/marlboro-pack-of-20-cigarettes-4eb251a5b2874b3ea329da82db428a5d
 
 	SkinnedMesh eagle;
 
-	eagle.LoadMesh("Resources\\Models\\Eagle\\eagle.fbx");
+	eagle.LoadMesh("Resources\\Models\\Eagle\\eagle.fbx"); //Gotten from https://www.turbosquid.com/3d-models/eagle-rigged-fbx-free/1045001
 
 	const int numberOfBones = eagle.NumBones();
 	vector<glm::mat4> Transforms;
