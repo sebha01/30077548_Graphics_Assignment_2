@@ -23,7 +23,7 @@
 	AND TEXTURES ARE INITIALISED.
 
 	YOU WILL FIND THE MOST UP TO DATE RELEASE OF THIS ASSIGNMENT WITHIN THE RELEASES TAB AND IT WILL BE A ZIP FILE NAMED ->
-	30077548_GRAPHICS_ASSIGNMENT_2.ZIP
+	30077548_CW2.ZIP
 */
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
