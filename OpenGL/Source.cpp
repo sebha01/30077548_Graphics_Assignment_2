@@ -21,7 +21,47 @@ double lastX = camera_settings.screenWidth / 2.0f;
 double lastY = camera_settings.screenHeight / 2.0f;
 
 bool pause = false;
- 
+
+//Global object position data makes it easier for updating object movement later
+//Object position data for the white monsters and malboros
+vector<float> objectXPositions =
+{
+	-14.0, //White monster1
+	14.0, //White monster 2
+	-14.0, //Malboro reds 1
+	14.0 //Malboro reds 2
+};
+
+vector<float> objectYPositions =
+{
+	-10.0, //White monster1
+	-10.0, //White monster 2
+	10.0, //Malboro reds 1
+	10.0 //Malboro reds 2
+};
+
+//Variables for navigating the object array
+int objectPositionIndex = 0;
+int maxObjectArrayIndex = 3;
+
+vector<float> defaultObjectXPositions =
+{
+	-14.0, //White monster1
+	14.0, //White monster 2
+	-14.0, //Malboro reds 1
+	14.0 //Malboro reds 2
+};
+
+vector<float> defaultObjectYPositions =
+{
+	-10.0, //White monster1
+	-10.0, //White monster 2
+	10.0, //Malboro reds 1
+	10.0 //Malboro reds 2
+};
+
+//bool variable so it doesn't get wierd with selecting the different objects
+bool keyPressed = false;
 
 int main()
 {
@@ -124,17 +164,17 @@ int main()
 		0.0, 1.0, 0.0, 1.0, // Green
 		1.0, 1.0, 0.0, 1.0, //Yellow
 		0.0, 0.0, 1.0, 1.0, //Blue
-		0.0, 1.0, 1.0, 1.0 //White light above tower
+		1.0, 1.0, 1.0, 1.0 //White light above tower
 	};	// White main light 
 	GLfloat light_positions[] = {
 		27.0, 5.0, 18.0, 1.0, //Red Light
 		-27.0, 5.0, 18.0, 1.0, //Green
 		-27.0, 5.0, -18.0, 1.0, //Yellow
 		27.0, 5.0, -18.0, 1.0, // Blue
-		0.0, 5.0, 0.0, 1.0 // White light above tower
+		0.0, 20.0, 0.0, 1.0 // White light above tower
 	};	// Point light (w=1.0)
 	GLfloat	attenuation[] = { 1.0, 0.10, 0.08 };
-
+	
 	// Materials
 	GLfloat mat_amb_diff[] = { 1.0, 1.0, 1.0, 1.0 };	// Texture map will provide ambient and diffuse.
 	GLfloat mat_specularCol[] = { 1.0, 1.0, 1.0, 1.0 }; // White highlight
@@ -231,9 +271,9 @@ int main()
 		glUseProgram(basicShader); //Use the Basic shader
 		//Pass the uniform data to Basic shader///////////////////////////////////
 		//Pass the light data
-		glUniform4fv(uLightDiffusers, 4, (GLfloat*)&light_diffusers);
+		glUniform4fv(uLightDiffusers, 5, (GLfloat*)&light_diffusers);
 		glUniform4fv(uLightAmbient, 1, (GLfloat*)&light_ambient);
-		glUniform4fv(uLightPositions, 4, (GLfloat*)&light_positions);
+		glUniform4fv(uLightPositions, 5, (GLfloat*)&light_positions);
 		glUniform3fv(uLightAttenuation, 1, (GLfloat*)&attenuation);
 		glUniform3fv(uEyePos, 1, (GLfloat*)&eyePos);
 
@@ -259,25 +299,25 @@ int main()
 		//White monsters and malboro reds
 
 		whiteMonsterModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
-		whiteMonsterModel = glm::translate(whiteMonsterModel, glm::vec3(-14.0, 1.0, -10.0));
+		whiteMonsterModel = glm::translate(whiteMonsterModel, glm::vec3(objectXPositions[0], 1.0, objectYPositions[0]));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader);
 
 		whiteMonsterModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
-		whiteMonsterModel = glm::translate(whiteMonsterModel, glm::vec3(14.0, 1.0, -10.0));
+		whiteMonsterModel = glm::translate(whiteMonsterModel, glm::vec3(objectXPositions[1], 1.0, objectYPositions[1]));
 		whiteMonsterModel = glm::rotate(whiteMonsterModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(whiteMonsterModel));
 		whiteMonster.draw(basicShader);
 
 		malboroRedsModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
-		malboroRedsModel = glm::translate(malboroRedsModel, glm::vec3(-14.0, 1.0, 10.0));
+		malboroRedsModel = glm::translate(malboroRedsModel, glm::vec3(objectXPositions[2], 1.0, objectYPositions[2]));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
 
 		malboroRedsModel = glm::scale(glm::mat4(1.0), glm::vec3(2.0, 2.0, 2.0));
-		malboroRedsModel = glm::translate(malboroRedsModel, glm::vec3(14.0, 1.0, 10.0));
+		malboroRedsModel = glm::translate(malboroRedsModel, glm::vec3(objectXPositions[3], 1.0, objectYPositions[3]));
 		malboroRedsModel = glm::rotate(malboroRedsModel, glm::radians(phase), glm::vec3(0.0, 1.0, 0.0));
 		glUniformMatrix4fv(glGetUniformLocation(basicShader, "model"), 1, GL_FALSE, glm::value_ptr(malboroRedsModel));
 		malboroReds.draw(basicShader);
@@ -343,6 +383,7 @@ void processInput(GLFWwindow* window)
 		glfwSetWindowShouldClose(window, true);
 
 	double cameraMoveSpeed = timer.getDeltaTimeSeconds() * 8;
+	double objectModeSpeed = 0.05;
 
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		camera.processKeyboard(FORWARD, cameraMoveSpeed);
@@ -353,10 +394,64 @@ void processInput(GLFWwindow* window)
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.processKeyboard(RIGHT, cameraMoveSpeed);
 
-	//process input for moving dragon around
+	//process input for changing which object to control
+	/*boolean added as without it it kept messing with which was the current object index as it was very sensitive on what
+	the press needed to be from the keyboard*/
+	if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+	{
+		if (!keyPressed)
+		{
+			keyPressed = true;
+			objectPositionIndex -= 1;
+
+			if (objectPositionIndex < 0)
+			{
+				objectPositionIndex = maxObjectArrayIndex;
+			}
+		}
+	}
+	else if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+	{
+		if (!keyPressed)
+		{
+			keyPressed = true;
+			objectPositionIndex += 1;
+
+			if (objectPositionIndex > maxObjectArrayIndex)
+			{
+				objectPositionIndex = 0;
+			}
+		}
+	}
+	else
+	{
+		keyPressed = false;
+	}
+
+	//Code for changing x and y object positions
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+	{
+		objectXPositions[objectPositionIndex] -= objectModeSpeed;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+	{
+		objectXPositions[objectPositionIndex] += objectModeSpeed;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	{
+		objectYPositions[objectPositionIndex] -= objectModeSpeed;
+	}
+	else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	{
+		objectYPositions[objectPositionIndex] += objectModeSpeed;
+	}
+
+	//Code for resetting object positions as they were
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS)
 	{
-
+		objectXPositions = defaultObjectXPositions;
+		objectYPositions = defaultObjectYPositions;
+		objectPositionIndex = 0;
 	}
 }
 
